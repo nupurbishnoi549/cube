@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/images/png/gojo.png" type="image/x-icon">
+    <title>Interactive Images</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80vmin;
+            height: 80vmin;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 2px solid #fff;
+            backface-visibility: hidden;
+            opacity: 0.8;
+        }
+
+        .face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .face:nth-child(1) {
+            transform: rotateY(0deg) translateZ(40vmin);
+        }
+
+        .face:nth-child(2) {
+            transform: rotateY(90deg) translateZ(40vmin);
+        }
+
+        .face:nth-child(3) {
+            transform: rotateY(180deg) translateZ(40vmin);
+        }
+
+        .face:nth-child(4) {
+            transform: rotateY(270deg) translateZ(40vmin);
+        }
+
+        .face:nth-child(5) {
+            transform: rotateX(90deg) translateZ(40vmin);
+        }
+
+        .face:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(40vmin);
+        }
+
+        @keyframes rotateCube {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            25% {
+                transform: rotateX(90deg) rotateY(90deg);
+            }
+
+            50% {
+                transform: rotateX(180deg) rotateY(180deg);
+            }
+
+            75% {
+                transform: rotateX(270deg) rotateY(270deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        /* Mobile and Tablet Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 70vmin;
+                height: 70vmin;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 60vmin;
+                height: 60vmin;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="cube">
+            <div class="face">
+                <img src="./assets/images/anu.jpeg" alt="Image 1">
+            </div>
+            <div class="face">
+                <img src="./assets/images/anu1.jpeg" alt="Image 2">
+            </div>
+            <div class="face">
+                <img src="./assets/images/1st.jpg" alt="Image 3">
+            </div>
+            <div class="face">
+                <img src="./assets/images/anu-reena.png" alt="Image 4">
+            </div>
+            <div class="face">
+                <img src="./assets/images/anu2.jpeg" alt="Image 5">
+            </div>
+            <div class="face">
+                <img src="./assets/images/5th.jpg" alt="Image 6">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // GSAP animation for the cube's dynamic rotation (smooth effect)
+        gsap.to(".cube", {
+            rotationX: 360,
+            rotationY: 360,
+            duration: 15,
+            repeat: -1,
+            ease: "linear"
+        });
+    </script>
+
+</body>
+
+</html>
